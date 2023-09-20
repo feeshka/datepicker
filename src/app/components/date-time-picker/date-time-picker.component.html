@@ -1,12 +1,8 @@
-<input #dateInput [ngModel]="date.toString() | date:'dd-MM-yyyy HH:mm'">
-<span>{{date.toString() | date:'dd-MM-yyyy'}}</span>
-<form [formGroup]="form">
-    <input formControlName="date" type="text" (click)="d.toggle()" (closed)="setDate()" [footerTemplate]="pickerActions"
-        ngbDatepicker #d="ngbDatepicker" [positionTarget]="dateInput" />
-
-    <ng-template #pickerActions>
-        <ngb-timepicker formControlName="time"></ngb-timepicker>
-        <button (click)="d.close()">Ok</button>
-        <button (click)="d.close()">Cancel</button>
-    </ng-template>
-</form>
+<input [ngModel]="date.toString() | date:'dd-MM-yyyy HH:mm'" (click)="toggleCalendarPopup()">
+<ngb-datepicker [class.d-none]="!isPopupVisible" [(ngModel)]="pickerDate"
+    [footerTemplate]="pickerActions"></ngb-datepicker>
+<ng-template #pickerActions>
+    <ngb-timepicker [(ngModel)]="pickerTime"></ngb-timepicker>
+    <button (click)="toggleCalendarPopup()">Ok</button>
+    <button (click)="toggleCalendarPopup()">Cancel</button>
+</ng-template>
