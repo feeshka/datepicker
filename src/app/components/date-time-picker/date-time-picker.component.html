@@ -1,7 +1,8 @@
-<input [(ngModel)]="date" />
+<input #dateInput [ngModel]="date.toString() | date:'dd-MM-yyyy HH:mm'">
+<span>{{date.toString() | date:'dd-MM-yyyy'}}</span>
 <form [formGroup]="form">
     <input formControlName="date" type="text" (click)="d.toggle()" (closed)="setDate()" [footerTemplate]="pickerActions"
-        ngbDatepicker #d="ngbDatepicker" />
+        ngbDatepicker #d="ngbDatepicker" [positionTarget]="dateInput" />
 
     <ng-template #pickerActions>
         <ngb-timepicker formControlName="time"></ngb-timepicker>
