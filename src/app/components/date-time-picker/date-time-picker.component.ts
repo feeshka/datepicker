@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { Moment } from 'moment';
@@ -11,7 +11,7 @@ import { Moment } from 'moment';
 export class DateTimePickerComponent implements OnInit {
 
   @Input() date: Moment = moment();
-  @Input() dateChange: EventEmitter<Moment> = new EventEmitter<Moment>();
+  @Output() dateChange: EventEmitter<Moment> = new EventEmitter<Moment>();
 
   form = new FormGroup<any>({
     date: new FormControl(''),
@@ -21,6 +21,14 @@ export class DateTimePickerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  setDate() {
+    console.log('date', this.form.value.date);
+    console.log('time', this.form.value.time);
+    const date = this.form.value.date;
+    const time = this.form.value.time;
+    this.date = moment(`${date.month}`, "MM-DD-YYYY");;
   }
 
 }

@@ -1,9 +1,11 @@
+<input [(ngModel)]="date" />
 <form [formGroup]="form">
-    <input type="text" (click)="d.toggle()" [footerTemplate]="pickerActions" ngbDatepicker #d="ngbDatepicker" />
+    <input formControlName="date" type="text" (click)="d.toggle()" (closed)="setDate()" [footerTemplate]="pickerActions"
+        ngbDatepicker #d="ngbDatepicker" />
 
     <ng-template #pickerActions>
         <ngb-timepicker formControlName="time"></ngb-timepicker>
-        <button (click)="d.toggle()">Ok</button>
-        <button (click)="d.toggle()">Cancel</button>
+        <button (click)="d.close()">Ok</button>
+        <button (click)="d.close()">Cancel</button>
     </ng-template>
 </form>
