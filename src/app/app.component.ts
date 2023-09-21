@@ -15,4 +15,8 @@ export class AppComponent {
   public get datetime(): Moment {
     return this.testDate;
   }
+
+  setDate(date: string) {
+    this.testDate = moment(date);
+  }
 }

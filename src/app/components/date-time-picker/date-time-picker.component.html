@@ -1,8 +1,8 @@
-<input [ngModel]="date.toString() | date:'dd-MM-yyyy HH:mm'" (click)="toggleCalendarPopup()">
+<input [(ngModel)]="date" (click)="toggleCalendarPopup(false)">
 <ngb-datepicker [class.d-none]="!isPopupVisible" [(ngModel)]="pickerDate"
     [footerTemplate]="pickerActions"></ngb-datepicker>
 <ng-template #pickerActions>
     <ngb-timepicker [(ngModel)]="pickerTime"></ngb-timepicker>
-    <button (click)="toggleCalendarPopup()">Ok</button>
-    <button (click)="toggleCalendarPopup()">Cancel</button>
+    <button (click)="toggleCalendarPopup(true)">Ok</button>
+    <button (click)="toggleCalendarPopup(false)">Cancel</button>
 </ng-template>
